@@ -12,7 +12,7 @@ import pages.CheckoutPage;
 import pages.StorePage;
 
 public class MyStepdefs {
-    WebDriver driver;
+    private WebDriver driver;
     StorePage storePage;
     CartPage cartPage;
     CheckoutPage checkoutPage;

@@ -12,6 +12,7 @@ public class Hook {
 
     @Before
     public void setUp(Scenario scenario){
+
         driver = DriverFactory.intitializeDriver();
     }
     @After

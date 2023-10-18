@@ -4,6 +4,7 @@ import org.checkerframework.checker.units.qual.C;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class StorePage extends BasePage {
     WebDriver driver;
@@ -21,15 +22,14 @@ public class StorePage extends BasePage {
     WebElement viewCartBtn;
 
     public String getStorePageTitle(){
-        return pageTitle.getText();
+        return wait.until(ExpectedConditions.elementToBeClickable(pageTitle)).getText();
     }
 
     public void addProdToCart(){
-        addToCartBtn.click();
-
+        wait.until(ExpectedConditions.elementToBeClickable(addToCartBtn)).click();
     }
     public CartPage goToViewCart(){
-        viewCartBtn.click();
+        wait.until(ExpectedConditions.elementToBeClickable(viewCartBtn)).click();
         return new CartPage(driver);
     }
 

@@ -12,13 +12,10 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 
 public class CheckoutPage extends BasePage {
-    private WebDriver driver;
-
     public CheckoutPage(WebDriver driver){
         super(driver);
-        this.driver = driver;
-    }
 
+    }
     @FindBy (xpath = "//*[@class='has-text-align-center']")
     WebElement billingPageTitle;
 
@@ -40,7 +37,8 @@ public class CheckoutPage extends BasePage {
     WebElement billingCity;
 
     public String getBillingPageTitle(){
-        return billingPageTitle.getText();
+        return wait.until(ExpectedConditions.elementToBeClickable(billingPageTitle)).getText();
+
     }
 
     public void typeFirstName(String name){

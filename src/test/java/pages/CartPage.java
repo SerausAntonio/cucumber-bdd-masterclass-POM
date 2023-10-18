@@ -5,13 +5,14 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class CartPage extends BasePage {
-    private WebDriver driver;
-    public CartPage(WebDriver driver){
+
+   public CartPage(WebDriver driver){
         super(driver);
-        this.driver = driver;
-    }
+     }
+
     @FindBy (css = ".count")
     WebElement cntMsg;
 
@@ -26,11 +27,12 @@ public class CartPage extends BasePage {
     }
 
     public String getProdName(){
-       return prodName.getText();
+      return wait.until(ExpectedConditions.elementToBeClickable(prodName)).getText();
+
     }
 
     public CheckoutPage proceedToCheckOut(){
-         checkOutBtn.click();
+         wait.until(ExpectedConditions.elementToBeClickable(checkOutBtn)).click();
          return new CheckoutPage(driver);
     }
 
